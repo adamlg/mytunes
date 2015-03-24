@@ -2,12 +2,23 @@
 var SongQueueView = Backbone.View.extend({
 
   //does event fire when current song finishes?
+  tagName: "table",
 
   initialize: function() {
+    this.render();
   },
 
-  render: function() {
-    return this.$el;
+  render: function(){
+    // to preserve event handlers on child nodes, we must call .detach() on them before overwriting with .html()
+    // see http://api.jquery.com/detach/
+    this.$el.children().detach();
+
+    this.$el.html('<th>Song Queue</th>').append(
+      this.collection.map(function(song){
+        return new SongQueueEntryView({model: song}).render();
+      })
+    );
   }
+  
 
 });
