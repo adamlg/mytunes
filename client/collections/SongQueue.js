@@ -10,9 +10,12 @@ var SongQueue = Songs.extend({
 
   //load song in player
   enqueue: function(song) {
+    console.log('SongQueue enqueue called');
+    this.add(song);
     if (this.length === 1) {
       this.playFirst();
     }
+    console.log('SongQueue : ', this);
   },
 
   //remove item from queue

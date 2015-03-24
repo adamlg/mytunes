@@ -2,12 +2,11 @@
 var SongQueueEntryView = Backbone.View.extend({
   // your code here!
   initialize: function() {
-    this.on('enqueue dequeue', this.render, this)
+    console.log('initialize')
+   this.on('add', this.render, this)
   },
 
-  // render: function() {
-  //   return this.$el;
-  // }
+ 
 
   tagName: 'tr',
 
@@ -20,13 +19,17 @@ var SongQueueEntryView = Backbone.View.extend({
     },
 
     'add remove': function() {
+      console.log(this)
       this.render();
+    },
+    'enqueue': function() {
+      console.log('test')
     }
 
   },
 
   render: function(){
     console.log(this)
-    return this.$el.html(this);
+    return this.$el.html(this.template(this.model.attributes));
   }
 });
