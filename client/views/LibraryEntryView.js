@@ -7,11 +7,22 @@ var LibraryEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      this.model.play();
+      this.model.enqueue();
     }
+
+    // 'click .addQueue': function(e) {
+    //   // console.log(this.model.attributes);
+    //   e.stopPropagation();
+    //   this.trigger('enqueue',this.model.attributes);
+    //   // this.model.add();
+
+    //   //this.queue.enqueue(this.model.attributes);
+    //   //this.songQueue.enqueue(this);
+    // } 
   },
 
   render: function(){
+    // console.log(this.model.attributes);
     return this.$el.html(this.template(this.model.attributes));
   }
 

@@ -2,12 +2,14 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
+    console.log('initialize called')
     this.on('add',this.enqueue, this)
   },
 
   //load song in player
   enqueue: function(song) {
     // this.add(song)
+    console.log('enqueue function called')
     if (this.length === 1) {
       this.playFirst();
     }
